@@ -1,7 +1,8 @@
 {
-  "name": "kahoot-bot",
+  "name": "kahoot-bomber",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
+  "main": "bomber.js",
   "dependencies": {
     "kahoot.js-updated": "^2.4.0"
   }
