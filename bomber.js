@@ -1,7 +1,7 @@
 import Kahoot from "kahoot.js-updated";
 
 const BASE_NAME = "﷽﷽﷽﷽﷽﷽﷽﷽﷽﷽﷽﷽";
-const BOT_COUNT = 500;
+const BOT_COUNT = 10;
 
 export function launchBomb(pin) {
   for (let i = 1; i <= BOT_COUNT; i++) {
@@ -22,6 +22,6 @@ export function launchBomb(pin) {
       client.on("Disconnect", reason => {
         console.log(`[!] Bot ${nickname} disconnected: ${reason}`);
       });
-    }, i * 50); // stagger joins
+    }, i * 50); // stagger joins to avoid rate limits
   }
 }
