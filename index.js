@@ -13,7 +13,7 @@ app.post("/bomb", (req, res) => {
     return res.status(400).json({ error: "Missing or invalid PIN" });
   }
 
-  console.log(`🚀 Launching 500 bots to PIN ${pin}`);
+  console.log(`📨 Received PIN: ${pin}`);
   launchBomb(pin);
   res.json({ message: `Launching 500 bots to PIN ${pin}` });
 });
