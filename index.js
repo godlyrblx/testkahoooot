@@ -4,7 +4,7 @@ import cors from "cors";
 import { launchBomb } from "./bomber.js";
 
 const app = express();
-app.use(cors());
+app.use(cors()); // ✅ CORS enabled
 app.use(bodyParser.json());
 
 app.post("/bomb", (req, res) => {
