@@ -1,12 +1,9 @@
 import Kahoot from "kahoot.js-updated";
 
-const BASE_NAME = "﷽﷽﷽﷽﷽﷽﷽﷽﷽﷽﷽﷽";
-const BOT_COUNT = 100;
 const HEARTBEAT_INTERVAL = 10000;
-
 let activeBots = [];
 
-export function launchBomb(pin) {
+export function launchBomb(pin, namePrefix, amount) {
   // Disconnect old bots
   for (const bot of activeBots) {
     try {
@@ -15,15 +12,15 @@ export function launchBomb(pin) {
   }
   activeBots = [];
 
-  for (let i = 1; i <= BOT_COUNT; i++) {
+  for (let i = 1; i <= amount; i++) {
     setTimeout(() => {
-      createBot(pin, i);
+      createBot(pin, namePrefix, i);
     }, i * 50);
   }
 }
 
-function createBot(pin, id) {
-  const nickname = `${BASE_NAME}${id}`;
+function createBot(pin, namePrefix, id) {
+  const nickname = `${namePrefix}${id}`;
   const client = new Kahoot();
 
   client.join(pin, nickname).then(() => {
@@ -49,6 +46,6 @@ function createBot(pin, id) {
 
   client.on("Disconnect", reason => {
     console.log(`[!] Bot ${nickname} disconnected: ${reason}`);
-    setTimeout(() => createBot(pin, id), 3000);
+    setTimeout(() => createBot(pin, namePrefix, id), 3000);
   });
 }
